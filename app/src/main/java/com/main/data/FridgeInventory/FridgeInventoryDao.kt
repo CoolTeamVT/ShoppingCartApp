@@ -14,7 +14,7 @@ interface FridgeInventoryDao {
     fun insertFridgeInventory(fridgeInventory: FridgeInventoryEntity)
 
     @Query("SELECT * FROM fridgeInventory_db")
-    fun getFridgeInventoryById(id: Int) : Flow<List<FridgeInventoryEntity>>?
+    fun getFridgeInventoryById() : Flow<List<FridgeInventoryEntity>>?
 
     // suspend?
 }
