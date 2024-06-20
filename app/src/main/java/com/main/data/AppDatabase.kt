@@ -6,12 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.main.data.RecipesDB.RecipeDao
 import com.main.data.RecipesDB.RecipeDatabaseEntity
+import com.main.data.ShoppingLists.ShoppingListDao
+import com.main.data.ShoppingLists.ShoppingListEntity
 
 @Database(
-    entities = [RecipeDatabaseEntity::class],
+    entities = [RecipeDatabaseEntity::class, ShoppingListEntity::class],
     version = 1
 )abstract class AppDatabase: RoomDatabase() {
     abstract val recipeDao: RecipeDao
+    abstract val shoppingListDao: ShoppingListDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -30,5 +33,3 @@ import com.main.data.RecipesDB.RecipeDatabaseEntity
         }
     }
 
-
-}
