@@ -1,12 +1,12 @@
-package com.main.data.IngredientsDB
+package com.main.data.local.IngredientsDB
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.main.data.FridgeInventory.FridgeInventoryEntity
-import com.main.data.RecipesDB.RecipeDatabaseEntity
-import com.main.data.ShoppingLists.ShoppingListEntity
+import com.main.data.local.FridgeInventory.FridgeInventoryEntity
+import com.main.data.local.RecipesDB.RecipeDatabaseEntity
+import com.main.data.local.ShoppingLists.ShoppingListEntity
 
 @Entity(
     tableName = "ingredients_bd",

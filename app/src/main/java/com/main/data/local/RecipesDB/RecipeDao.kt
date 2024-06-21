@@ -1,4 +1,4 @@
-package com.main.data.RecipesDB
+package com.main.data.local.RecipesDB
 
 import androidx.room.Dao
 import androidx.room.Insert

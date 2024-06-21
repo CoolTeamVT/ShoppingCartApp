@@ -1,9 +1,9 @@
-package com.main.data.API
+package com.main.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.shoppingcartapp.BuildConfig
-import com.main.data.API.dto.QueryClass
+import com.main.data.remote.dto.QueryClass
 
 class RecipePageSource(
     private val recipeApi: RecipeApi,

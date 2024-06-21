@@ -1,7 +1,7 @@
-package com.main.data.API
+package com.main.data.remote
 
 import androidx.annotation.IntRange
-import com.main.data.API.dto.QueryClass
+import com.main.data.remote.dto.QueryClass
 import com.main.utils.Constants.DEFAULT_PAGE_SIZE
 import com.main.utils.Constants.MAX_PAGE_SIZE
 import retrofit2.Response
