@@ -19,6 +19,7 @@ internal fun IngredientsEntity.toIngredientModel() : IngredientModel {
     return IngredientModel(
         id = id,
         name = name,
-        grams = grams
+        quantity = quantity,
+        measure = measure
     )
 }

@@ -18,7 +18,8 @@ internal fun IngredientClass.toIngredientEntity() : IngredientsEntity {
     return IngredientsEntity(
         id = 0,
         name = food,
-        grams = quantity,
+        quantity = quantity,
+        measure = measure,
         recipeId = null,
         shoppingListId = null,
         fridgeInventoryId = null
