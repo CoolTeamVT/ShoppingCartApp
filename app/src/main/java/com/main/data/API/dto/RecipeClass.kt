@@ -11,5 +11,5 @@ data class RecipeClass(
     @SerializedName("ingredients") @Expose
     val ingredients: List<IngredientClass>,
     @SerializedName("totalWeigh") @Expose
-    val totalWeight: Float
+    val totalWeight: Double
 )
