@@ -1,3 +1,7 @@
+import java.util.Properties
+import com.android.build.api.variant.BuildConfigField
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -8,6 +12,10 @@ plugins {
 android {
     namespace = "com.example.shoppingcartapp"
     compileSdk = 34
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId = "com.example.shoppingcartapp"
@@ -57,6 +65,22 @@ android {
     }
 }
 
+androidComponents {
+    val properties = Properties()
+    properties.load(project.rootProject.file("local.properties").inputStream())
+
+    onVariants {
+        it.buildConfigFields.put(
+            "API_KEY", BuildConfigField(
+                "String", "\"${properties.getProperty("API_KEY")}\"" , "apiKey")
+            )
+        it.buildConfigFields.put(
+            "API_ID", BuildConfigField(
+                "String", "\"${properties.getProperty("API_ID")}\"" , "apiId")
+        )
+    }
+}
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -76,6 +100,9 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
