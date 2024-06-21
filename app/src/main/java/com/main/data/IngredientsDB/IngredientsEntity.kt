@@ -14,19 +14,19 @@ import com.main.data.ShoppingLists.ShoppingListEntity
         ForeignKey(
             entity = RecipeDatabaseEntity::class,
             parentColumns = ["id"],
-            childColumns = ["recipeId"],
+            childColumns = ["recipe_id"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = ShoppingListEntity::class,
             parentColumns = ["id"],
-            childColumns = ["shoppingListId"],
+            childColumns = ["shoppingList_Id"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = FridgeInventoryEntity::class,
             parentColumns = ["id"],
-            childColumns = ["fridgeInventoryId"],
+            childColumns = ["fridgeInventory_id"],
             onDelete = ForeignKey.CASCADE
         )
     ]
@@ -35,7 +35,7 @@ data class IngredientsEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo("ingredient_name")val name: String,
     @ColumnInfo("grams")val grams: Double,
-    @ColumnInfo("recipeId")val recipeId: Int?,
-    @ColumnInfo("shoppingListId")val shoppingListId: Int?,
-    @ColumnInfo("fridgeInventoryId")val fridgeInventoryId: Int?
+    @ColumnInfo("recipe_id")val recipeId: Int?,
+    @ColumnInfo("shoppingList_id")val shoppingListId: Int?,
+    @ColumnInfo("fridgeInventory_id")val fridgeInventoryId: Int?
 )
