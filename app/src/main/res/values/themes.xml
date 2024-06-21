@@ -2,9 +2,4 @@
 <resources>
 
     <style name="Theme.ShoppingCartApp" parent="android:Theme.Material.Light.NoActionBar" />
-
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="postSplashScreenTheme">@style/Theme.ShoppingCartApp</item>
-    </style>
 </resources>
