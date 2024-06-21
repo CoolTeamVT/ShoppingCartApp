@@ -20,7 +20,7 @@ import com.main.data.ShoppingLists.ShoppingListEntity
         ForeignKey(
             entity = ShoppingListEntity::class,
             parentColumns = ["id"],
-            childColumns = ["shoppingList_Id"],
+            childColumns = ["shoppingList_id"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
@@ -34,7 +34,8 @@ import com.main.data.ShoppingLists.ShoppingListEntity
 data class IngredientsEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo("ingredient_name")val name: String,
-    @ColumnInfo("grams")val grams: Double,
+    @ColumnInfo("quantity") val quantity: Double,
+    @ColumnInfo("measure") val measure: String,
     @ColumnInfo("recipe_id")val recipeId: Int?,
     @ColumnInfo("shoppingList_id")val shoppingListId: Int?,
     @ColumnInfo("fridgeInventory_id")val fridgeInventoryId: Int?
