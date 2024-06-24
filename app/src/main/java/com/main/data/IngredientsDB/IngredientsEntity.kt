@@ -20,7 +20,7 @@ import com.main.data.ShoppingLists.ShoppingListEntity
         ForeignKey(
             entity = ShoppingListEntity::class,
             parentColumns = ["id"],
-            childColumns = ["shoppingList_Id"],
+            childColumns = ["shoppingList_id"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
