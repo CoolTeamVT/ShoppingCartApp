@@ -1,6 +1,6 @@
 package com.main.domain.repository
 
-import com.main.data.IngredientsDB.IngredientsEntity
+import com.main.data.local.IngredientsDB.IngredientsEntity
 import kotlinx.coroutines.flow.Flow
 
 interface IngredientsRepository {

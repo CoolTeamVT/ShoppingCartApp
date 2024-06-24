@@ -1,7 +1,7 @@
 package com.main.data.repository
 
-import com.main.data.IngredientsDB.IngredientsDao
-import com.main.data.IngredientsDB.IngredientsEntity
+import com.main.data.local.IngredientsDB.IngredientsDao
+import com.main.data.local.IngredientsDB.IngredientsEntity
 import com.main.domain.repository.IngredientsRepository
 import kotlinx.coroutines.flow.Flow
 

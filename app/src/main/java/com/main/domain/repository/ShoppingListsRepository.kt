@@ -1,6 +1,6 @@
 package com.main.domain.repository
 
-import com.main.data.ShoppingLists.ShoppingListEntity
+import com.main.data.local.ShoppingLists.ShoppingListEntity
 import kotlinx.coroutines.flow.Flow
 
 interface ShoppingListsRepository {

@@ -1,7 +1,7 @@
 package com.main.data.repository
 
-import com.main.data.FridgeInventory.FridgeInventoryDao
-import com.main.data.FridgeInventory.FridgeInventoryEntity
+import com.main.data.local.FridgeInventory.FridgeInventoryDao
+import com.main.data.local.FridgeInventory.FridgeInventoryEntity
 import com.main.domain.repository.FridgeInventoryRepository
 import kotlinx.coroutines.flow.Flow
 

@@ -1,6 +1,6 @@
 package com.main.domain.repository
 
-import com.main.data.FridgeInventory.FridgeInventoryEntity
+import com.main.data.local.FridgeInventory.FridgeInventoryEntity
 import kotlinx.coroutines.flow.Flow
 
 interface FridgeInventoryRepository {

@@ -1,7 +1,7 @@
 package com.main.data.repository
 
-import com.main.data.RecipesDB.RecipeDao
-import com.main.data.RecipesDB.RecipeDatabaseEntity
+import com.main.data.local.RecipesDB.RecipeDao
+import com.main.data.local.RecipesDB.RecipeDatabaseEntity
 import com.main.domain.repository.RecipesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
