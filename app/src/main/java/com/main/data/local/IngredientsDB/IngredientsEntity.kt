@@ -1,12 +1,12 @@
-package com.main.data.IngredientsDB
+package com.main.data.local.IngredientsDB
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.main.data.FridgeInventory.FridgeInventoryEntity
-import com.main.data.RecipesDB.RecipeDatabaseEntity
-import com.main.data.ShoppingLists.ShoppingListEntity
+import com.main.data.local.FridgeInventory.FridgeInventoryEntity
+import com.main.data.local.RecipesDB.RecipeDatabaseEntity
+import com.main.data.local.ShoppingLists.ShoppingListEntity
 
 @Entity(
     tableName = "ingredients_bd",
@@ -34,7 +34,8 @@ import com.main.data.ShoppingLists.ShoppingListEntity
 data class IngredientsEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo("ingredient_name")val name: String,
-    @ColumnInfo("grams")val grams: Double,
+    @ColumnInfo("quantity") val quantity: Double,
+    @ColumnInfo("measure") val measure: String,
     @ColumnInfo("recipe_id")val recipeId: Int?,
     @ColumnInfo("shoppingList_id")val shoppingListId: Int?,
     @ColumnInfo("fridgeInventory_id")val fridgeInventoryId: Int?

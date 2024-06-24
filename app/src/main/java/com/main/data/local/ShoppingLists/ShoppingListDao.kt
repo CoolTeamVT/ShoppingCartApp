@@ -1,4 +1,4 @@
-package com.main.data.ShoppingLists
+package com.main.data.local.ShoppingLists
 
 import androidx.room.Dao
 import androidx.room.Insert

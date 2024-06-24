@@ -1,17 +1,17 @@
-package com.main.data
+package com.main.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.main.data.FridgeInventory.FridgeInventoryDao
-import com.main.data.FridgeInventory.FridgeInventoryEntity
-import com.main.data.IngredientsDB.IngredientsDao
-import com.main.data.IngredientsDB.IngredientsEntity
-import com.main.data.RecipesDB.RecipeDao
-import com.main.data.RecipesDB.RecipeDatabaseEntity
-import com.main.data.ShoppingLists.ShoppingListDao
-import com.main.data.ShoppingLists.ShoppingListEntity
+import com.main.data.local.FridgeInventory.FridgeInventoryDao
+import com.main.data.local.FridgeInventory.FridgeInventoryEntity
+import com.main.data.local.IngredientsDB.IngredientsDao
+import com.main.data.local.IngredientsDB.IngredientsEntity
+import com.main.data.local.RecipesDB.RecipeDao
+import com.main.data.local.RecipesDB.RecipeDatabaseEntity
+import com.main.data.local.ShoppingLists.ShoppingListDao
+import com.main.data.local.ShoppingLists.ShoppingListEntity
 
 @Database(
     entities = [RecipeDatabaseEntity::class, ShoppingListEntity::class, FridgeInventoryEntity::class, IngredientsEntity::class],

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a9181d31a606ce9fbcce585a4bc25569",
+    "identityHash": "741324e916a9bd7f32e8502a140d895a",
     "entities": [
       {
         "tableName": "recipes_db",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT, `grams` REAL, `number_of_servings` INTEGER, `preparation_time` TEXT, `image` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `grams` REAL, `image` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -21,27 +21,9 @@
             "notNull": true
           },
           {
-            "fieldPath": "description",
-            "columnName": "description",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
             "fieldPath": "grams",
             "columnName": "grams",
             "affinity": "REAL",
-            "notNull": false
-          },
-          {
-            "fieldPath": "servingsNumber",
-            "columnName": "number_of_servings",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "preparationTime",
-            "columnName": "preparation_time",
-            "affinity": "TEXT",
             "notNull": false
           },
           {
@@ -212,7 +194,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a9181d31a606ce9fbcce585a4bc25569')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '741324e916a9bd7f32e8502a140d895a')"
     ]
   }
 }
