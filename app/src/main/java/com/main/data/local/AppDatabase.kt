@@ -14,13 +14,17 @@ import com.main.data.local.ShoppingListsDB.ShoppingListDao
 import com.main.data.local.ShoppingListsDB.ShoppingListEntity
 
 @Database(
-    entities = [RecipeEntity::class, ShoppingListEntity::class, FridgeInventoryEntity::class, IngredientsEntity::class],
+    entities = [
+        RecipeEntity::class,
+        ShoppingListEntity::class,
+        FridgeInventoryEntity::class,
+        IngredientsEntity::class],
     version = 1
 )abstract class AppDatabase: RoomDatabase() {
-    abstract val recipeDao: RecipeDao
-    abstract val shoppingListDao: ShoppingListDao
-    abstract val fridgeInventoryDao: FridgeInventoryDao
-    abstract val ingredientsDao: IngredientsDao
+    abstract fun recipeDao(): RecipeDao
+    abstract fun shoppingListDao(): ShoppingListDao
+    abstract fun fridgeInventoryDao(): FridgeInventoryDao
+    abstract fun ingredientsDao(): IngredientsDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null

@@ -9,8 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class IngredientsRepositoryImpl(
+class IngredientsRepositoryImpl @Inject constructor(
     private val ingredientsDao: IngredientsDao
 ) : IngredientsRepository{
     override suspend fun getIngredients(): Flow<List<IngredientModel>> {
