@@ -1,4 +1,4 @@
-package com.main.data.local.FridgeInventory
+package com.main.data.local.FridgeInventoryDB
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

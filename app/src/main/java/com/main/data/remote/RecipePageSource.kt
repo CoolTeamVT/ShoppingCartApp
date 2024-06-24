@@ -3,7 +3,7 @@ package com.main.data.remote
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.shoppingcartapp.BuildConfig
-import com.main.data.local.toRecipeModel
+import com.main.data.local.utils.toRecipeModelWithIngredients
 import com.main.domain.models.RecipeModel
 import com.main.utils.Constants
 import retrofit2.HttpException
@@ -33,7 +33,7 @@ class RecipePageSource(
         try {
             if (response.isSuccessful) {
                 val recipes = response.body()!!.hits.map { it.recipe.toRecipeEntity()
-                    .toRecipeModel(it.recipe.ingredients
+                    .toRecipeModelWithIngredients(it.recipe.ingredients
                         .map {
                             it.toIngredientEntity() }
                     )

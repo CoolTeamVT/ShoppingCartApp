@@ -3,10 +3,10 @@ package com.main.data.remote
 import com.main.data.remote.dto.IngredientClass
 import com.main.data.remote.dto.RecipeClass
 import com.main.data.local.IngredientsDB.IngredientsEntity
-import com.main.data.local.RecipesDB.RecipeDatabaseEntity
+import com.main.data.local.RecipesDB.RecipeEntity
 
-internal fun RecipeClass.toRecipeEntity() : RecipeDatabaseEntity {
-    return RecipeDatabaseEntity(
+internal fun RecipeClass.toRecipeEntity() : RecipeEntity {
+    return RecipeEntity(
         id = 0,
         name = label,
         grams = totalWeight,

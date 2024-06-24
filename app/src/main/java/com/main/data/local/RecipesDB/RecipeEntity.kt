@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity (
     tableName = "recipes_db"
 )
-data class RecipeDatabaseEntity (
+data class RecipeEntity (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "grams") val grams: Double?,

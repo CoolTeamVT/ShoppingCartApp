@@ -1,4 +1,4 @@
-package com.main.data.local.FridgeInventory
+package com.main.data.local.FridgeInventoryDB
 
 import androidx.room.Dao
 import androidx.room.Insert

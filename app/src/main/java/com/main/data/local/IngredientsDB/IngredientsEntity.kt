@@ -4,15 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.main.data.local.FridgeInventory.FridgeInventoryEntity
-import com.main.data.local.RecipesDB.RecipeDatabaseEntity
-import com.main.data.local.ShoppingLists.ShoppingListEntity
+import com.main.data.local.FridgeInventoryDB.FridgeInventoryEntity
+import com.main.data.local.RecipesDB.RecipeEntity
+import com.main.data.local.ShoppingListsDB.ShoppingListEntity
 
 @Entity(
     tableName = "ingredients_bd",
     foreignKeys = [
         ForeignKey(
-            entity = RecipeDatabaseEntity::class,
+            entity = RecipeEntity::class,
             parentColumns = ["id"],
             childColumns = ["recipe_id"],
             onDelete = ForeignKey.CASCADE

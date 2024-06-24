@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecipeDao {
-    @Insert(entity = RecipeDatabaseEntity::class, onConflict = OnConflictStrategy.REPLACE)
-    fun insertRecipe(recipe: RecipeDatabaseEntity)
+    @Insert(entity = RecipeEntity::class, onConflict = OnConflictStrategy.REPLACE)
+    fun insertRecipe(recipe: RecipeEntity)
 
     @Query("SELECT * FROM recipes_db")
-    fun getRecipe(): Flow<List<RecipeDatabaseEntity>>
+    fun getRecipe(): Flow<List<RecipeEntity>>
 }

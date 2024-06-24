@@ -4,17 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.main.data.local.FridgeInventory.FridgeInventoryDao
-import com.main.data.local.FridgeInventory.FridgeInventoryEntity
+import com.main.data.local.FridgeInventoryDB.FridgeInventoryDao
+import com.main.data.local.FridgeInventoryDB.FridgeInventoryEntity
 import com.main.data.local.IngredientsDB.IngredientsDao
 import com.main.data.local.IngredientsDB.IngredientsEntity
 import com.main.data.local.RecipesDB.RecipeDao
-import com.main.data.local.RecipesDB.RecipeDatabaseEntity
-import com.main.data.local.ShoppingLists.ShoppingListDao
-import com.main.data.local.ShoppingLists.ShoppingListEntity
+import com.main.data.local.RecipesDB.RecipeEntity
+import com.main.data.local.ShoppingListsDB.ShoppingListDao
+import com.main.data.local.ShoppingListsDB.ShoppingListEntity
 
 @Database(
-    entities = [RecipeDatabaseEntity::class, ShoppingListEntity::class, FridgeInventoryEntity::class, IngredientsEntity::class],
+    entities = [RecipeEntity::class, ShoppingListEntity::class, FridgeInventoryEntity::class, IngredientsEntity::class],
     version = 1
 )abstract class AppDatabase: RoomDatabase() {
     abstract val recipeDao: RecipeDao
