@@ -1,8 +1,8 @@
 package com.main.data.repositories
 
 import com.main.data.local.IngredientsDB.IngredientsDao
-import com.main.data.local.utils.fromModelToEntity
-import com.main.data.local.utils.toIngredientModel
+import com.main.data.Mappers.fromModelToEntity
+import com.main.data.Mappers.toIngredientModel
 import com.main.domain.models.IngredientModel
 import com.main.domain.repositories.IngredientsRepository
 import kotlinx.coroutines.Dispatchers

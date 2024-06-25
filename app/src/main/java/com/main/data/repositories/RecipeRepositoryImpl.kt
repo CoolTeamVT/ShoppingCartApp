@@ -1,8 +1,8 @@
 package com.main.data.repositories
 
 import com.main.data.local.RecipesDB.RecipeDao
-import com.main.data.local.utils.fromModelToEntity
-import com.main.data.local.utils.toRecipeModelWithoutIngredients
+import com.main.data.Mappers.fromModelToEntity
+import com.main.data.Mappers.toRecipeModelWithoutIngredients
 import com.main.domain.models.RecipeModel
 import com.main.domain.repositories.RecipesRepository
 import kotlinx.coroutines.Dispatchers

@@ -1,8 +1,8 @@
 package com.main.data.repositories
 
 import com.main.data.local.ShoppingListsDB.ShoppingListDao
-import com.main.data.local.utils.fromModelToEntity
-import com.main.data.local.utils.toShoppingListModel
+import com.main.data.Mappers.fromModelToEntity
+import com.main.data.Mappers.toShoppingListModel
 import com.main.domain.models.ShoppingListModel
 import com.main.domain.repositories.ShoppingListsRepository
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.main.data.local.utils
+package com.main.data.Mappers
 
 import com.main.data.local.FridgeInventoryDB.FridgeInventoryEntity
 import com.main.data.local.IngredientsDB.IngredientsEntity

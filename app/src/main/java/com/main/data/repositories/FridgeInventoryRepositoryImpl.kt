@@ -1,8 +1,8 @@
 package com.main.data.repositories
 
 import com.main.data.local.FridgeInventoryDB.FridgeInventoryDao
-import com.main.data.local.utils.fromModelToEntity
-import com.main.data.local.utils.toFridgeInventoryModel
+import com.main.data.Mappers.fromModelToEntity
+import com.main.data.Mappers.toFridgeInventoryModel
 import com.main.domain.models.FridgeInventoryModel
 import com.main.domain.repositories.FridgeInventoryRepository
 import kotlinx.coroutines.Dispatchers

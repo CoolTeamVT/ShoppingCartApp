@@ -1,7 +1,7 @@
 package com.main.data.remote
 
 import androidx.annotation.IntRange
-import com.main.data.remote.dto.QueryClass
+import com.main.data.remote.dto.RecipeDto
 import com.main.utils.Constants.DEFAULT_PAGE_SIZE
 import com.main.utils.Constants.MAX_PAGE_SIZE
 import retrofit2.Response
@@ -17,5 +17,5 @@ interface RecipeApi {
         @Query("q") query : String,
         @Query("page") @IntRange page: Int,
         @Query("pageSize") @IntRange(from = 1, to = MAX_PAGE_SIZE.toLong()) pageSize: Int = DEFAULT_PAGE_SIZE,
-        ) : Response<QueryClass>
+        ) : List<RecipeDto>
 }
