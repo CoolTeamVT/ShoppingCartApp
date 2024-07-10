@@ -12,9 +12,4 @@ data class RecipeEntity (
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "grams") val grams: Double?,
     @ColumnInfo(name = "image") val imageUrl: String?
-){
-    companion object {
-        //TODO: fun from(recipeModel: RecipeModel): RecipeDatabaseEntity
-        //TODO: fun to(): RecipeModel
-    }
-}
+)

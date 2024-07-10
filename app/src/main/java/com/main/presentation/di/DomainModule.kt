@@ -10,6 +10,8 @@ import com.main.domain.usecases.GetUsecases.GetFromRecipeDBUsecase
 import com.main.domain.usecases.GetUsecases.GetFromRecipeDBUsecaseImpl
 import com.main.domain.usecases.GetUsecases.GetFromShoppingListDBUsecase
 import com.main.domain.usecases.GetUsecases.GetFromShoppingListDBUsecaseImpl
+import com.main.domain.usecases.GetUsecases.GetMealsUsecase
+import com.main.domain.usecases.GetUsecases.GetMealsUsecaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -41,4 +43,8 @@ abstract class DomainModule {
     @Binds
     abstract fun bindGetFromApiUsecase(getFromApiUsecaseImpl: GetFromApiUsecaseImpl):
             GetFromApiUsecase
+
+    @Binds
+    abstract fun bindGetMealsUsecase(getMealsUsecaseImpl: GetMealsUsecaseImpl):
+            GetMealsUsecase
 }

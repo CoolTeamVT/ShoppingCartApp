@@ -4,6 +4,7 @@ import android.app.Application
 import com.main.data.local.AppDatabase
 import com.main.data.local.FridgeInventoryDB.FridgeInventoryDao
 import com.main.data.local.IngredientsDB.IngredientsDao
+import com.main.data.local.MealsDB.MealsDao
 import com.main.data.local.RecipesDB.RecipeDao
 import com.main.data.local.ShoppingListsDB.ShoppingListDao
 import dagger.Module
@@ -41,6 +42,12 @@ class DatabaseModule {
     @Singleton
     fun provideIngredientsDao(appDatabase: AppDatabase) : IngredientsDao {
         return appDatabase.ingredientsDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMealsDao(appDatabase: AppDatabase): MealsDao {
+        return appDatabase.mealsDao()
     }
 
 }

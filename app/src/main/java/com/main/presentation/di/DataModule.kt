@@ -2,10 +2,12 @@ package com.main.presentation.di
 
 import com.main.data.repositories.FridgeInventoryRepositoryImpl
 import com.main.data.repositories.IngredientsRepositoryImpl
+import com.main.data.repositories.MealsRepositoryImpl
 import com.main.data.repositories.RecipeRepositoryImpl
 import com.main.data.repositories.ShoppingListsRepositoryImpl
 import com.main.domain.repositories.FridgeInventoryRepository
 import com.main.domain.repositories.IngredientsRepository
+import com.main.domain.repositories.MealsRepository
 import com.main.domain.repositories.RecipesRepository
 import com.main.domain.repositories.ShoppingListsRepository
 import dagger.Binds
@@ -33,5 +35,8 @@ abstract class DataModule {
     abstract fun bindShoppingListsRepository(
         shoppingListsRepositoryImpl: ShoppingListsRepositoryImpl): ShoppingListsRepository
 
+    @Binds
+    abstract fun bindMealsRepository(
+        mealsRepositoryImpl: MealsRepositoryImpl): MealsRepository
 
 }
