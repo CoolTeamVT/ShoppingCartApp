@@ -10,10 +10,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class GetFromApiUsecase @Inject constructor(
+interface GetFromApiUsecase {
+    fun execute() : Flow<PagingData<RecipeModel>>
+}
+
+class GetFromApiUsecaseImpl @Inject constructor(
     private val pager: Pager<Int, RecipeApiEntity>
-) {
-    fun execute() : Flow<PagingData<RecipeModel>> {
+): GetFromApiUsecase {
+    override fun execute() : Flow<PagingData<RecipeModel>> {
         return pager.flow.map { pagingData -> pagingData.map { it.toRecipeModelWithIngredients() } }
     }
 }

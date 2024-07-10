@@ -1,5 +1,7 @@
 package com.main.presentation.di
 
+import com.main.domain.usecases.GetUsecases.GetFromApiUsecase
+import com.main.domain.usecases.GetUsecases.GetFromApiUsecaseImpl
 import com.main.domain.usecases.GetUsecases.GetFromFridgeInventoryDBUsecase
 import com.main.domain.usecases.GetUsecases.GetFromFridgeInventoryDBUsecaseImpl
 import com.main.domain.usecases.GetUsecases.GetFromIngredientDBUsecase
@@ -35,4 +37,8 @@ abstract class DomainModule {
     abstract fun bindGetFromShoppingListDBUsecase(getFromShoppingListDBUsecaseImpl:
                                                       GetFromShoppingListDBUsecaseImpl) :
             GetFromShoppingListDBUsecase
+
+    @Binds
+    abstract fun bindGetFromApiUsecase(getFromApiUsecaseImpl: GetFromApiUsecaseImpl):
+            GetFromApiUsecase
 }
