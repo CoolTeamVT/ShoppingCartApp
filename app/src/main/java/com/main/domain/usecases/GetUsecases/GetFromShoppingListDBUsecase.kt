@@ -11,7 +11,7 @@ interface GetFromShoppingListDBUsecase {
 }
 class GetFromShoppingListDBUsecaseImpl @Inject constructor(
     private val shoppingListsRepository: ShoppingListsRepository
-) : BasicGetUsecase<List<ShoppingListModel>, None>() {
+) : BasicGetUsecase<List<ShoppingListModel>, None>(), GetFromShoppingListDBUsecase {
     override suspend fun execute(params: None): Flow<List<ShoppingListModel>> {
         return shoppingListsRepository.getShoppingLists()
     }
