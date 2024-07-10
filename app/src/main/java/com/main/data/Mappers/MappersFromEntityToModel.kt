@@ -2,6 +2,7 @@ package com.main.data.Mappers
 
 import com.main.data.local.FridgeInventoryDB.FridgeInventoryEntity
 import com.main.data.local.IngredientsDB.IngredientsEntity
+import com.main.data.local.RecipeApiDB.RecipeApiEntity
 import com.main.data.local.RecipesDB.RecipeEntity
 import com.main.data.local.ShoppingListsDB.ShoppingListEntity
 import com.main.domain.models.FridgeInventoryModel
@@ -19,7 +20,14 @@ internal fun RecipeEntity.toRecipeModelWithIngredients(ingredients : List<Ingred
     )
 }
 
-internal fun RecipeEntity.toRecipeModelWithoutIngredients() : RecipeModel{
+internal fun RecipeApiEntity.toRecipeModelWithIngredients() : RecipeModel{
+    return RecipeModel(
+        id = id,
+        name = name,
+        grams = grams,
+        imageUrl = imageUrl
+    )
+}internal fun RecipeEntity.toRecipeModelWithoutIngredients() : RecipeModel{
     return RecipeModel(
         id = id,
         name = name,
