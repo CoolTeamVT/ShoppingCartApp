@@ -9,8 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class ShoppingListsRepositoryImpl(
+class ShoppingListsRepositoryImpl @Inject constructor(
     private val shoppingListDao: ShoppingListDao
 ) : ShoppingListsRepository {
     override suspend fun getShoppingLists(): Flow<List<ShoppingListModel>> {

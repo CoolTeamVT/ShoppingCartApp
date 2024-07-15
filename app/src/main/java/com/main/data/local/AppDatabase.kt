@@ -8,19 +8,27 @@ import com.main.data.local.FridgeInventoryDB.FridgeInventoryDao
 import com.main.data.local.FridgeInventoryDB.FridgeInventoryEntity
 import com.main.data.local.IngredientsDB.IngredientsDao
 import com.main.data.local.IngredientsDB.IngredientsEntity
+import com.main.data.local.MealsDB.MealsDao
+import com.main.data.local.MealsDB.MealsEntity
 import com.main.data.local.RecipesDB.RecipeDao
 import com.main.data.local.RecipesDB.RecipeEntity
 import com.main.data.local.ShoppingListsDB.ShoppingListDao
 import com.main.data.local.ShoppingListsDB.ShoppingListEntity
 
 @Database(
-    entities = [RecipeEntity::class, ShoppingListEntity::class, FridgeInventoryEntity::class, IngredientsEntity::class],
+    entities = [
+        RecipeEntity::class,
+        ShoppingListEntity::class,
+        FridgeInventoryEntity::class,
+        IngredientsEntity::class,
+        MealsEntity::class],
     version = 1
 )abstract class AppDatabase: RoomDatabase() {
-    abstract val recipeDao: RecipeDao
-    abstract val shoppingListDao: ShoppingListDao
-    abstract val fridgeInventoryDao: FridgeInventoryDao
-    abstract val ingredientsDao: IngredientsDao
+    abstract fun recipeDao(): RecipeDao
+    abstract fun shoppingListDao(): ShoppingListDao
+    abstract fun fridgeInventoryDao(): FridgeInventoryDao
+    abstract fun ingredientsDao(): IngredientsDao
+    abstract fun mealsDao(): MealsDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null

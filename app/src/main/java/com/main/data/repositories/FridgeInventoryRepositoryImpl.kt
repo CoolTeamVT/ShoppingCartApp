@@ -9,8 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class FridgeInventoryRepositoryImpl(
+class FridgeInventoryRepositoryImpl @Inject constructor(
     private val fridgeInventoryDao: FridgeInventoryDao
 ) : FridgeInventoryRepository{
     override suspend fun getFridgeInventories(): Flow<List<FridgeInventoryModel>> {

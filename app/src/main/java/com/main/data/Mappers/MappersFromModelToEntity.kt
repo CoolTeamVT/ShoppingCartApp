@@ -2,10 +2,12 @@ package com.main.data.Mappers
 
 import com.main.data.local.FridgeInventoryDB.FridgeInventoryEntity
 import com.main.data.local.IngredientsDB.IngredientsEntity
+import com.main.data.local.MealsDB.MealsEntity
 import com.main.data.local.RecipesDB.RecipeEntity
 import com.main.data.local.ShoppingListsDB.ShoppingListEntity
 import com.main.domain.models.FridgeInventoryModel
 import com.main.domain.models.IngredientModel
+import com.main.domain.models.MealsModel
 import com.main.domain.models.RecipeModel
 import com.main.domain.models.ShoppingListModel
 
@@ -29,6 +31,14 @@ internal fun IngredientModel.fromModelToEntity(): IngredientsEntity {
     )
 }
 
+internal fun MealsModel.fromModelToEntity() : MealsEntity {
+    return MealsEntity(
+        id = this.id,
+        category = this.category,
+        date = this.date,
+        recipeId = this.recipeId
+    )
+}
 internal fun RecipeModel.fromModelToEntity(): RecipeEntity {
     return RecipeEntity(
         id = this.id,

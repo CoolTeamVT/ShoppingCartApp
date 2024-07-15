@@ -7,7 +7,6 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.shoppingcartapp.BuildConfig
 import com.main.data.local.RecipeApiDB.RecipeApiDB
-import com.main.data.local.RecipeApiDB.RecipeApiDao
 import com.main.data.local.RecipeApiDB.RecipeApiEntity
 import retrofit2.HttpException
 import toRecipeEntity
@@ -19,6 +18,7 @@ class RecipeRemoteMediator(
     private val recipeApi: RecipeApi,
     private val query: String
 ): RemoteMediator<Int, RecipeApiEntity>(){
+
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, RecipeApiEntity>,
@@ -45,7 +45,11 @@ class RecipeRemoteMediator(
                 query = query,
                 page = loadKey,
                 pageSize = state.config.pageSize
-            )
+            ).flatMap { queryDto ->
+                queryDto.hits.map { HitDto ->
+                    HitDto.recipe
+                }
+            }
 
             database.withTransaction {
                 if(loadType == LoadType.REFRESH){
