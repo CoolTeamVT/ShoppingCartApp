@@ -5,8 +5,10 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 
 
 @Composable
@@ -19,7 +21,7 @@ fun BottomNavigationBar(navController: NavController){
     )
 
     BottomNavigation {
-        //Name of current screen:
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navController.currentBackStackEntry?.destination?.route
         items.forEach{ item ->
             BottomNavigationItem(
