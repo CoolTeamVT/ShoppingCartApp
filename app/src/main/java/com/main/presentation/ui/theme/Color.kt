@@ -14,3 +14,4 @@ val DateTextColor = Color(0xFF2F3036)
 
 val MealFrameCategoryColor = Color(0xFF495D92)
 val MealFrameColor = Color(0xFFF4F3FA)
+val ExtendedMealFrameColor = Color(0xFFFED7F9)
