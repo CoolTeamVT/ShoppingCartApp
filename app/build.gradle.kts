@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.shoppingcartapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -101,6 +101,10 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //Calendar Picker
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:core:1.3.0")
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:calendar:1.3.0")
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

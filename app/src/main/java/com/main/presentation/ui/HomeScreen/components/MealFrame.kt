@@ -45,7 +45,9 @@ import com.main.utils.TextSizes
 fun MealFrame(
     isExtended: Boolean,
     category: String,
-    onClicked: () -> Unit
+    onExpandClicked: () -> Unit,
+    onNavigateClicked: () -> Unit,
+
 ) {
     var frameHeight by remember {
         mutableStateOf(Dimens.homeScreenMealFrame)
@@ -98,7 +100,7 @@ fun MealFrame(
                         .size(Dimens.homeScreenMealFrameImage)
                         .clickable {
                             isRotated = !isRotated
-                            onClicked()
+                            onExpandClicked()
                         }
                 ) {
                     with(painter) {
@@ -120,7 +122,8 @@ fun MealFrame(
                             Dimens.homeScreenMealFrameRoundedShape,
                             Dimens.homeScreenMealFrameRoundedShape
                         )
-                    ),
+                    )
+                    .clickable { onNavigateClicked() },
 
                     contentAlignment = Alignment.CenterStart
                 ) {
@@ -145,6 +148,6 @@ fun MealFrame(
 @Composable
 fun MealFramePreview() {
     ShoppingCartAppTheme {
-        MealFrame(false, category = "breakfast", onClicked = {})
+        MealFrame(false, category = "breakfast",{}, {})
     }
 }
