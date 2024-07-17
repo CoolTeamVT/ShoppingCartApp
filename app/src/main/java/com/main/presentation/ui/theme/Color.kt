@@ -12,6 +12,9 @@ val Pink40 = Color(0xFF7D5260)
 
 val DateTextColor = Color(0xFF2F3036)
 
-val MealFrameCategoryColor = Color(0xFF495D92)
-val MealFrameColor = Color(0xFFF4F3FA)
-val ExtendedMealFrameColor = Color(0xFFFED7F9)
+val DarkBlue = Color(0xFF495D92)
+val DarkWhite = Color(0xFFF4F3FA)
+val LightPink = Color(0xFFFED7F9)
+
+val Grey = Color(0xFF5E5E5E)
+val LightBlue = Color(0xFF7EA1FC)

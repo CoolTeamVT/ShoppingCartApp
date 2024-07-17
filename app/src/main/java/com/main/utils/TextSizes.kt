@@ -6,4 +6,6 @@ object TextSizes {
 
     val homeScreenDateText = 30.sp
     val homeScreenMealFrameText = 20.sp
+
+    val bottomNavTextSize = 12.sp
 }
