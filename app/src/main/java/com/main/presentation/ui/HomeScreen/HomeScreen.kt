@@ -47,6 +47,8 @@ fun HomeScreen(
     val date by viewModel.date.collectAsState()
     val isCalendarPickerOpened by viewModel.isDatePickerOpened.collectAsState()
 
+    val mealState by viewModel.mealsState.collectAsState()
+
     if (isCalendarPickerOpened) {
         CalendarDialog(
             state = rememberUseCaseState(visible = true),
@@ -81,45 +83,49 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(Dimens.homeScreenSpacer))
 
             MealFrame(
+                mealState = mealState[0],
                 isExtended = isExtended[0],
                 category = String.breakfastString,
                 onExpandClicked = {
                     viewModel.onEvent(HomeScreenEvent.BoxExtensionFirstEvent)
                 },
-                onNavigateClicked = {}
+                onNavigateClicked = {recipeId ->}
             )
 
             Spacer(modifier = Modifier.height(Dimens.homeScreenSpacer))
 
             MealFrame(
+                mealState = mealState[1],
                 isExtended = isExtended[1],
                 category = String.lunchString,
                 onExpandClicked = {
                     viewModel.onEvent(HomeScreenEvent.BoxExtensionSecondEvent)
                 },
-                onNavigateClicked = {}
+                onNavigateClicked = {recipeId ->}
                 )
 
             Spacer(modifier = Modifier.height(Dimens.homeScreenSpacer))
 
             MealFrame(
+                mealState = mealState[2],
                 isExtended = isExtended[2],
                 category = String.dinnerString,
                 onExpandClicked =  {
                     viewModel.onEvent(HomeScreenEvent.BoxExtensionThirdEvent)
                 },
-                onNavigateClicked = {}
+                onNavigateClicked = {recipeId ->}
             )
 
             Spacer(modifier = Modifier.height(Dimens.homeScreenSpacer))
 
             MealFrame(
+                mealState = mealState[3],
                 isExtended = isExtended[3],
                 category = String.snacksString,
                 onExpandClicked = {
                     viewModel.onEvent(HomeScreenEvent.BoxExtensionFourthEvent)
                 },
-                onNavigateClicked = {}
+                onNavigateClicked = {recipeId ->}
             )
         }
     }

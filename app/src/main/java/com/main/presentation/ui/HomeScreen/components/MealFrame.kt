@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -33,6 +34,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shoppingcartapp.R
+import com.main.presentation.ui.HomeScreen.MealState
 import com.main.presentation.ui.theme.ExtendedMealFrameColor
 import com.main.presentation.ui.theme.MealFrameCategoryColor
 import com.main.presentation.ui.theme.MealFrameColor
@@ -43,10 +45,11 @@ import com.main.utils.TextSizes
 
 @Composable
 fun MealFrame(
+    mealState: MealState?,
     isExtended: Boolean,
     category: String,
     onExpandClicked: () -> Unit,
-    onNavigateClicked: () -> Unit,
+    onNavigateClicked: (Int) -> Unit,
 
 ) {
     var frameHeight by remember {
@@ -55,11 +58,29 @@ fun MealFrame(
     var contentAlignment by remember {
         mutableStateOf(Alignment.Center)
     }
+
     var topPadding by remember {
         mutableStateOf(0.dp)
     }
+
     var isRotated by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(targetValue = if (isRotated || isExtended) 180f else 0f)
+
+    var name by remember {
+        mutableStateOf("")
+    }
+    var recipeId by remember{
+        mutableStateOf(0)
+    }
+
+    when(mealState) {
+        is MealState.MealExists -> {
+            name = mealState.name
+            recipeId = mealState.recipeId
+        }
+        is MealState.CategoryDoesNotExist -> {}
+        else -> {}
+    }
 
     Box(
         modifier = Modifier
@@ -123,7 +144,7 @@ fun MealFrame(
                             Dimens.homeScreenMealFrameRoundedShape
                         )
                     )
-                    .clickable { onNavigateClicked() },
+                    .clickable { onNavigateClicked(recipeId) },
 
                     contentAlignment = Alignment.CenterStart
                 ) {
@@ -132,7 +153,7 @@ fun MealFrame(
                             .padding(
                                 horizontal = Dimens.homeScreenMealFramePadding
                             ),
-                        text = "Data",
+                        text = name,
                         fontFamily = FontFamilies.montserratSemibold,
                         fontSize = TextSizes.homeScreenMealFrameText,
                         color = MealFrameCategoryColor
@@ -141,13 +162,10 @@ fun MealFrame(
             }
         }
     }
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun MealFramePreview() {
-    ShoppingCartAppTheme {
-        MealFrame(false, category = "breakfast",{}, {})
-    }
+
 }
