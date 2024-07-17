@@ -24,6 +24,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -51,190 +52,225 @@ import coil.request.ImageRequest
 import com.main.presentation.ui.theme.DarkWhite
 import com.example.shoppingcartapp.R
 import com.main.presentation.ui.theme.DarkBlue
+import com.main.presentation.ui.theme.LightPink
 import com.main.utils.Dimens
 import com.main.utils.FontFamilies
 
 @Composable
-fun SpeciesScreen(navController: NavController){
-    Box (
+fun SpeciesScreen(navController: NavController) {
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
+            .background(color = Color.White),
+
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = Modifier
-                .background(color = Color.White),
-
-        verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = 10.dp,
-                        top = 26.dp
-                    ),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                val arrowDown = ImageVector.vectorResource(R.drawable.arrow_down)
-                val painter = rememberVectorPainter(image = arrowDown)
-
-                Canvas(
-                    modifier = Modifier
-                        .size(Dimens.speciesScreenBackIcon)
-                        .clickable {
-                            //TODO()
-                        }
-                ) {
-                    with(painter) {
-                        rotate(90f) {
-                            draw(painter.intrinsicSize)
-                        }
-                    }
-                }
-                Text(
-                    text = "Сырники из творога",
-                    color = Color.Black,
-                    fontSize = 26.sp,
-                    fontFamily = FontFamilies.montserratMedium,
-                    modifier = Modifier
-                        .padding(start = 15.dp)
-                )
-            }
-
+        item {
+            Header()
+        }
+        item {
             Spacer(modifier = Modifier.height(23.dp))
+        }
 
-            Box(
-                modifier = Modifier
-            ) {
-                var isLoading by remember { mutableStateOf(true) }
-
-                AsyncImage(
-                    model = "https://menunedeli.ru/wp-content/uploads/2015/07/20/Prostye-syrniki-iz-tvoroga_opt-3-500x334.jpg",
-                    contentDescription = "Image with Loading Indicator",
-                    modifier = Modifier.fillMaxWidth(),
-                    onLoading = { isLoading = true },
-                    onSuccess = { isLoading = false },
-                    onError = { isLoading = false }
-                )
-
-                if (isLoading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .size(100.dp)
-                    )
-                }
-            }
-
+        item {
+            ImageCard()
+        }
+        item {
             Spacer(modifier = Modifier.height(10.dp))
+        }
 
-            Row (
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                val minusIcon = ImageVector.vectorResource(R.drawable.minus_icon)
-                val plusIcon = ImageVector.vectorResource(R.drawable.plus_icon)
-                val painterMinus = rememberVectorPainter(image = minusIcon)
-                val painterPlus = rememberVectorPainter(image = plusIcon)
+        item {
+            AmountView()
+        }
 
-                Canvas(
-                    modifier = Modifier
-                        .size(Dimens.speciesScreenPlusMinusIcon)
-                        .clickable {
-                            //TODO()
-                        }
-                ) {
-                    with(painterMinus) {
-                        draw(painterMinus.intrinsicSize)
-                    }
-                }
-
-                Text(
-                    text = "Amount",
-                    color = Color.Black,
-                    fontSize = 26.sp,
-                    fontFamily = FontFamilies.montserratMedium,
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
-                )
-
-                Canvas(
-                    modifier = Modifier
-                        .size(Dimens.speciesScreenPlusMinusIcon)
-                        .clickable {
-                            //TODO()
-                        }
-                ) {
-                    with(painterPlus) {
-                        draw(painterPlus.intrinsicSize)
-                    }
-                }
-            }
-
+        item {
             Spacer(modifier = Modifier.height(25.dp))
 
-            val items = listOf(
-                IngredientClass("Quark", "84 gr."),
-                IngredientClass("Flour", "13 gr."),
-                IngredientClass("Eggs", "2 it."),
-                IngredientClass("Sugar", "14 gr."),
-                IngredientClass("Salt", "0.7 gr."),
-                )
-            Column (modifier = Modifier
-                        .wrapContentHeight()
-                        .padding(horizontal = 25.dp)
-                        .background(color = DarkWhite, shape = RoundedCornerShape(30.dp)),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "Ingredients",
-                    fontSize = 20.sp,
-                    fontFamily = FontFamilies.montserratMedium,
-                    color = DarkBlue,
-                    modifier = Modifier
-                        .padding(top = 6.dp)
-                )
-                
+        }
+        val items = listOf(
+            IngredientClass("Quark", "84 gr."),
+            IngredientClass("Flour", "13 gr."),
+            IngredientClass("Eggs", "2 it."),
+            IngredientClass("Sugar", "14 gr."),
+            IngredientClass("Salt", "0.7 gr."),
+        )
 
-                LazyColumn(
-                    modifier = Modifier
-                ) {
-                    items(items) { item ->
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(IntrinsicSize.Max),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            LazyColumnText(text = item.name)
-                            LazyColumnText(text = item.amount)
-                        }
-                    }
-                }
+        item {
+            IngredientColumn(items = items)
+        }
 
-                Text(text = "")
-            }
-
-
+        item {
             Spacer(modifier = Modifier.height(25.dp))
 
             Button(
-                modifier = Modifier,
+                modifier = Modifier
+                    .fillMaxWidth(0.3f),
+                colors = ButtonColors(LightPink, DarkBlue, LightPink, DarkBlue),
                 onClick = { /*TODO*/ }) {
                 Text(
-                    text = "Add"
+                    text = "Add",
+                    fontSize = 20.sp
                 )
             }
 
+            Spacer(modifier = Modifier.height(25.dp))
+        }
+
+    }
+}
+@Composable
+fun IngredientColumn(items: List<IngredientClass>) {
+    Column(
+        modifier = Modifier
+            .wrapContentHeight()
+            .padding(horizontal = 25.dp)
+            .background(color = DarkWhite, shape = RoundedCornerShape(30.dp)),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Ingredients",
+            fontSize = 20.sp,
+            fontFamily = FontFamilies.montserratMedium,
+            color = DarkBlue,
+            modifier = Modifier
+                .padding(top = 6.dp)
+        )
+        items.forEach { item ->
+            ItemColumn(item)
+        }
+
+        Text(text = "")
+    }
+}
+
+@Composable
+fun ItemColumn(item: IngredientClass) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(IntrinsicSize.Max),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            LazyColumnText(text = item.name)
+            LazyColumnText(text = item.amount)
+        }
+}
+
+
+@Composable
+fun ImageCard() {
+    Box(
+        Modifier.height(300.dp)
+    ) {
+        var isLoading by remember { mutableStateOf(true) }
+
+        AsyncImage(
+            model = "https://menunedeli.ru/wp-content/uploads/2015/07/20/Prostye-syrniki-iz-tvoroga_opt-3-500x334.jpg",
+            contentDescription = "Image with Loading Indicator",
+            modifier = Modifier.fillMaxSize(),
+            onLoading = { isLoading = true },
+            onSuccess = { isLoading = false },
+            onError = { isLoading = false }
+        )
+
+        if (isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(100.dp)
+            )
         }
     }
+}
 
+
+@Composable
+fun Header() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                start = 10.dp,
+                top = 26.dp
+            ),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        val arrowDown = ImageVector.vectorResource(R.drawable.arrow_down)
+        val painter = rememberVectorPainter(image = arrowDown)
+
+        Canvas(
+            modifier = Modifier
+                .size(Dimens.speciesScreenBackIcon)
+                .clickable {
+                    //TODO()
+                }
+        ) {
+            with(painter) {
+                rotate(90f) {
+                    draw(painter.intrinsicSize)
+                }
+            }
+        }
+        Text(
+            text = "Сырники из творога",
+            color = Color.Black,
+            fontSize = 26.sp,
+            fontFamily = FontFamilies.montserratMedium,
+            modifier = Modifier
+                .padding(start = 15.dp)
+        )
+    }
+}
+
+@Composable
+fun AmountView() {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        val minusIcon = ImageVector.vectorResource(R.drawable.minus_icon)
+        val plusIcon = ImageVector.vectorResource(R.drawable.plus_icon)
+        val painterMinus = rememberVectorPainter(image = minusIcon)
+        val painterPlus = rememberVectorPainter(image = plusIcon)
+
+        Canvas(
+            modifier = Modifier
+                .size(Dimens.speciesScreenPlusMinusIcon)
+                .clickable {
+                    //TODO()
+                }
+        ) {
+            with(painterMinus) {
+                draw(painterMinus.intrinsicSize)
+            }
+        }
+
+        Text(
+            text = "Amount",
+            color = Color.Black,
+            fontSize = 26.sp,
+            fontFamily = FontFamilies.montserratMedium,
+            modifier = Modifier
+                .padding(horizontal = 24.dp)
+        )
+
+        Canvas(
+            modifier = Modifier
+                .size(Dimens.speciesScreenPlusMinusIcon)
+                .clickable {
+                    //TODO()
+                }
+        ) {
+            with(painterPlus) {
+                draw(painterPlus.intrinsicSize)
+            }
+        }
+    }
 }
 
 data class IngredientClass(
