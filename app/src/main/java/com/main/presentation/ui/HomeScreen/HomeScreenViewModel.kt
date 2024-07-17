@@ -26,9 +26,6 @@ class HomeScreenViewModel @Inject constructor(
     private val _date = MutableStateFlow(LocalDate.now().toString())
     val date: StateFlow<String> = _date
 
-    private val _dateUi = MutableStateFlow(_date.value)
-    val dateUi: StateFlow<String> = _dateUi
-
     private val _isDatePickerOpened = MutableStateFlow(false)
     val isDatePickerOpened : StateFlow<Boolean> = _isDatePickerOpened
 
@@ -40,14 +37,21 @@ class HomeScreenViewModel @Inject constructor(
     private fun updateDateForUi() {
         val dateString = _date.value
 
+        val formattedDataString = when (dateString) {
+            "Today" -> LocalDate.now().toString()
+            "Yesterday" -> LocalDate.now().minusDays(1).toString()
+            "Tomorrow" -> LocalDate.now().plusDays(1).toString()
+            else -> dateString
+        }
+
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        val localDate = LocalDate.parse(dateString, formatter)
+        val localDate = LocalDate.parse(formattedDataString, formatter)
 
         val today = LocalDate.now()
         val yesterday = today.minusDays(1)
         val tomorrow = today.plusDays(1)
 
-        _dateUi.value = when {
+        _date.value = when {
             _date.value.equals(today.toString()) -> "Today"
             _date.value.equals(yesterday.toString()) -> "Yesterday"
             _date.value.equals(tomorrow.toString()) -> "Tomorrow"
