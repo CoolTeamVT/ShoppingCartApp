@@ -14,15 +14,13 @@ import javax.inject.Inject
 class IngredientsRepositoryImpl @Inject constructor(
     private val ingredientsDao: IngredientsDao
 ) : IngredientsRepository{
-    override suspend fun getIngredients(): Flow<List<IngredientModel>> {
+    override suspend fun getIngredients(recipeId: Int): List<IngredientModel> {
         return withContext(Dispatchers.IO) {
-            return@withContext ingredientsDao.getAllIngredients().map { entityList->
-                entityList.map { entity ->
-                    entity.toIngredientModel()
+            return@withContext ingredientsDao.getAllIngredients(recipeId).map {ingredientsEntity ->
+                ingredientsEntity.toIngredientModel()
                 }
             }
         }
-    }
 
     override suspend fun addIngredient(ingredientModel: IngredientModel) {
         withContext(Dispatchers.IO) {

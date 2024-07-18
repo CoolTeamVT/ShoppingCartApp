@@ -1,4 +1,4 @@
-package com.main.presentation.ui.SpeciesScreens
+package com.main.presentation.ui.RecipeDetailScreen
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text

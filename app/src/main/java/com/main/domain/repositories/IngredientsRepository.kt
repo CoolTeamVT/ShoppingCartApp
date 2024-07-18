@@ -4,7 +4,7 @@ import com.main.domain.models.IngredientModel
 import kotlinx.coroutines.flow.Flow
 
 interface IngredientsRepository {
-    suspend fun getIngredients(): Flow<List<IngredientModel>>
+    suspend fun getIngredients(recipeId: Int): List<IngredientModel>
     suspend fun addIngredient(ingredientModel: IngredientModel)
 
 
