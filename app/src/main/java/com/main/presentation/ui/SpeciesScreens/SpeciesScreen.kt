@@ -9,8 +9,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -136,23 +137,13 @@ fun SpeciesScreen(
             Recipe("Good", "https://s12.stc.all.kpcdn.net/family/wp-content/uploads/2024/01/reczepty-poke-kotorye-mozhno-prigotovit-doma-960-560x420.jpg"), Recipe("Good", "https://s12.stc.all.kpcdn.net/family/wp-content/uploads/2024/01/reczepty-poke-kotorye-mozhno-prigotovit-doma-960-560x420.jpg")
 
         )
-        Spacer(modifier = Modifier.height(50.dp))
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 16.dp),
-            userScrollEnabled = true
+        Spacer(modifier = Modifier.height(8.dp))
+        
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(150.dp)
         ){
-            items(items.size / 2) {index ->
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 28.dp),
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    RecipeItem(item = items[index * 2])
-                    RecipeItem(item = items[index * 2 + 1])
-                }
+            itemsIndexed(items){ _, item ->
+                RecipeItem(item = item)
             }
         }
     }
