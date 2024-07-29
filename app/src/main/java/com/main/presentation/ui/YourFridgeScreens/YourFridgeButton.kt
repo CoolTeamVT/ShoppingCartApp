@@ -1,67 +1,77 @@
 package com.main.presentation.ui.YourFridgeScreens
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.rotate
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.shoppingcartapp.R
-import com.main.utils.Dimens
+import com.main.presentation.ui.theme.DarkBlue
 import com.main.utils.FontFamilies
 
 @Composable
-fun YourFridgeScreen(navController: NavController) {
-    Column(
+fun FridgeButton(
+    text: String,
+    onButtonClick: () -> Unit,
+) {
+    Row(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 24.dp)
+            .fillMaxWidth()
+            .requiredHeight(70.dp)
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Your Fridge",
+            text = text,
+            fontSize = 20.sp,
+            color = DarkBlue,
             fontFamily = FontFamilies.montserratSemibold,
-            fontSize = 42.sp,
             modifier = Modifier
-                .padding(top = 21.dp)
+                .clickable { onButtonClick() }
         )
 
-        Spacer(modifier = Modifier.height(70.dp))
+        val arrowDown = ImageVector.vectorResource(R.drawable.arrow_down)
+        val painter = rememberVectorPainter(image = arrowDown)
 
-        val painterFridge: Painter = painterResource(id = R.drawable.fridge_png)
-
-        Image(
-            painter = painterFridge,
-            contentDescription = null,
+        Canvas(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(251.dp)
-        )
+                .size(30.dp)
+                .clickable { onButtonClick() }
 
-        Spacer(modifier = Modifier.height(16.dp)) // Добавьте пространство между изображением и кнопками
+        ) {
+            with(painter) {
+                rotate(degrees = 270f) {
+                    draw(painter.intrinsicSize)
+                }
+            }
+        }
 
-        FridgeButton(text = "Detailed") {}
-        FridgeButton(text = "Add ingredients") {}
+
     }
+}
 
+
+@Preview(showBackground = true)
+@Composable
+fun prev() {
+    FridgeButton("text") {}
 }

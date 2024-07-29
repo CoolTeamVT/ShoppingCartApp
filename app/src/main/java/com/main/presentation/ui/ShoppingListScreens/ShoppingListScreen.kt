@@ -8,3 +8,4 @@ import androidx.navigation.NavController
 fun ShoppingListScreen(navController: NavController){
     Text("shopping_list_test")
 }
+
