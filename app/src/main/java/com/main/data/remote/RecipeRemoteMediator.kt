@@ -1,5 +1,6 @@
 package com.main.data.remote
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -16,7 +17,7 @@ import java.io.IOException
 class RecipeRemoteMediator(
     private val database: RecipeApiDB,
     private val recipeApi: RecipeApi,
-    private val query: String
+    private val query: String?
 ): RemoteMediator<Int, RecipeApiEntity>(){
 
     override suspend fun load(
@@ -39,16 +40,15 @@ class RecipeRemoteMediator(
                     }
                 }
             }
+            Log.d("Test", "I am here")
             val recipes = recipeApi.getRecipes(
                 apiId = BuildConfig.API_ID,
                 apiKey = BuildConfig.API_KEY,
                 query = query,
                 page = loadKey,
                 pageSize = state.config.pageSize
-            ).flatMap { queryDto ->
-                queryDto.hits.map { HitDto ->
+            ).hits.map { HitDto ->
                     HitDto.recipe
-                }
             }
 
             database.withTransaction {

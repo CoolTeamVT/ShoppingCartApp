@@ -22,10 +22,4 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
-    @Provides
-    @Singleton
-    fun provideApi(retrofit: Retrofit): RecipeApi {
-        return retrofit.create(RecipeApi::class.java)
-    }
 }
